@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Job Application</title>
+		<link rel="stylesheet" href="static/styles.css">
+	</head>
+	<body>
+		<h1>Job Selection</h1><br> 
+
+		<div>
+			<p id="head_p">Please enter your name and salary requirements. Then select the job you are applying for.</p>
+		</div>
+
+
+		<form action="/application" method="POST">
+			<label>First Name:
+				<input class="form_inp" 
+					type="text" 
+					name="firstname"
+					id="first_name">
+			</label><br>
+
+			<label>Last Name: 
+				<input class="form_inp" 
+					type="text" 
+					name="lastname"
+					id="last_name">
+			</label><br><br>
+
+			<label>Annual Salary Requirement: $
+				<input class="form_inp" 
+					type="number" 
+					name="salary"
+					id="salary_input">
+			</label><br><br>
+
+
+			<label>Job Title:
+				<select name="jobtitle">
+					<option value="software_eng">Software Engineer</option>
+					<option value="qa_eng">QA Engineer</option>
+					<option value="prod_mgr">Product Manager</option>
+				</select>
+			</label>
+
+				<input class="form_inp" type="submit">
+
+		</form>
+
+			</body>	
+
+</html>
