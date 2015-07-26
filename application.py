@@ -2,25 +2,24 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route("/application-form")
-def index_page():
-	first_name = request.args.get("firstname")
-	last_name = request.args.get("lastname")
-	salary_req = request.args.get("salary")
+@app.route("/")
+def start_app():
+	return render_template('application-form.html')
 
-	thank_string = ["Thank you, %s, for applying to be a %s. Your minumum salary request is %s dollars."] 
-	thank_string = thank_string % (first_name, last_name, salary_req)
+@app.route("/application", methods=["POST"]) 
+def index_page():
+	first_name_py = request.form.get("firstname")
+	job_title_py = request.form.get("jobtitle")
+	salary_req_py = request.form.get("salary")
+	
 	# Return this as a string
-	return "<html><body>thank_string</body></html>"
+	# return "<html><body>thank_string</body></html>"
 
 	# Alternately, we could make this a Jinja template in `templates/`
 	# and return that result of rendering this, like:
 	#
-	# return render_template("application.html", text=thank_string)
+	return render_template("confirmation.html", first_name = first_name_py, job_title = job_title_py, salary_req=salary_req_py)
 
-@app.route("/application")
-def thank_page():
-	return "On application page"
 
 if __name__ == "__main__":
 	app.run(debug=True)
